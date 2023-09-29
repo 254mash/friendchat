@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChatGPT Chatbot</title>
+    <style>
+        /* Add your CSS styling here */
+        /* Example styles for a chat-like interface */
+        #chatbox {
+            width: 300px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin: 0 auto;
+        }
+        #messages {
+            list-style-type: none;
+            padding: 0;
+        }
+        .user-message {
+            text-align: right;
+        }
+        .bot-message {
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <div id="chatbox">
+        <h2>ChatGPT Chatbot</h2>
+        <ul id="messages">
+            <!-- Chat messages will be displayed here -->
+        </ul>
+        <input type="text" id="user-input" placeholder="Type your message...">
+        <button onclick="sendMessage()">Send</button>
+    </div>
+
+    <script>
+        // JavaScript code for chat functionality
+        function appendMessage(message, sender) {
+            const messages = document.getElementById('messages');
+            const listItem = document.createElement('li');
+            listItem.textContent = message;
+            listItem.classList.add(sender === 'user' ? 'user-message' : 'bot-message');
+            messages.appendChild(listItem);
+        }
+
+        function sendMessage() {
+            const userMessage = document.getElementById('user-input').value;
+            if (userMessage.trim() === '') {
+                return;
+            }
+
+            // Add user message to the chat
+            appendMessage(userMessage, 'user');
+
+            // Replace this with your code to send the user message to the chatbot
+            // Example: fetch('/chatbot', { method: 'POST', body: userMessage })
+            // .then(response => response.text())
+            // .then(data => {
+            //     appendMessage(data, 'bot');
+            // });
+
+            // Clear the input field
+            document.getElementById('user-input').value = '';
+        }
+    </script>
+</body>
+</html>
